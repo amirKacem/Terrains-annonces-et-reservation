@@ -1,0 +1,31 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+    <div class="form-group">
+      <label for="email">Email </label>
+      <input  type="email" name="email" formControlName="email" id="email" 
+      class="form-control" placeholder="Enter Email" [ngClass]="{'is-invalid':submited && f.email.errors}">
+      <div *ngIf="submited && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">
+            Email is required
+        </div> 
+        <div *ngIf="f.email.errors.email">
+            Email must be valid email adress
+        </div> 
+      </div> 
+     
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" name="password" formControlName="password"  id="password"   [ngClass]="{'is-invalid':submited && f.password.errors}"
+      class="form-control" placeholder="Password">
+      <div *ngIf="submited && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">
+            Password is required.
+        </div> 
+        <div *ngIf="f.password.errors.minlength">
+            Password must be atleast 8 characteres.
+        </div> 
+      </div> 
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
