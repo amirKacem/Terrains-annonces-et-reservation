@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::middleware(['cors'])->group(function(){
     Route::post('register',[UserController::class,'register']);
-    Route::post('login',[UserController::class,'login'])->middleware('api');
+    Route::post('login',[UserController::class,'login']);
 });
 
 Route::group(['middleware' => 'auth.jwt,cors'], function () {

@@ -1,10 +1,10 @@
 export interface User {
     id:number,
-    nom:string,
-    prenom:string,
+    first_name:string,
+    last_name:string,
     email:string,
     password:string,
-    dateNaissance:string,
+    date_birth:string,
     tel:string,
     type:string
 }

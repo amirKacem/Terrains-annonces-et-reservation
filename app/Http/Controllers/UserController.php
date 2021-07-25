@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SignUpRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function register(Request $request){
-        
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     public function login(Request $request){
@@ -18,7 +22,24 @@ class UserController extends Controller
             return $this->respondWithToken($token);
         }
 
-        return response()->json(['error' => 'Unauthorized'], 401);
+        return response()->json(['error' => 'L\'adresse Email ou mot de passe incorrect'], 401);
+    }
+
+    public function register(SignUpRequest $request){
+   
+        User::create([
+            'email'=>$request->email,
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'password'=> Hash::make($request->password),
+            'type'=>$request->type,
+            'date_birth'=> $request->date,
+            'tel'=> $request->tel
+        ]);
+  
+            
+        return $this->login($request);
+
     }
 
 
@@ -35,8 +56,7 @@ class UserController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->factory()->getTTL() * 60,
-            'email' => Auth::user()->email
+            'expires_in' => $this->guard()->factory()->getTTL() * 60
         ]);
     }
 

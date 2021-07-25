@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms'
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +15,7 @@ export class LoginComponent implements OnInit {
   token:any;
   error;
 
-  constructor(private authService:AuthService,private formBuilder:FormBuilder) { }
+  constructor(private authService:AuthService,private formBuilder:FormBuilder,private router:Router) { }
   
   loginForm(){
     this.form = this.formBuilder.group({
@@ -23,6 +25,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.authService.loggedIn()){
+        this.router.navigate(['']);
+    }
     this.loginForm();
   }
 
@@ -37,18 +42,17 @@ export class LoginComponent implements OnInit {
     }
     this.disabled=true;
     this.authService.login(this.form.value).subscribe(res => {  
-          this.data = res;
+          this.authService.setToken(res.access_token);
+          this.router.navigateByUrl('/');
         },
-         error => {
-           console.log(error)
-           
-            this.showErrors(error)
+         ResError => {   
+            this.showErrors(ResError)
          }   
     );
   }
-  showErrors(error){
+  showErrors(res){
     this.disabled=false;
-    this.error = error.message;
+    this.error = res.error.error;
   }
 
 }
