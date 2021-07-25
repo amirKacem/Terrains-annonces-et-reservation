@@ -23,3 +23,8 @@ Route::middleware(['cors'])->group(function(){
     Route::post('login',[UserController::class,'login'])->middleware('api');
 });
 
+Route::group(['middleware' => 'auth.jwt,cors'], function () {
+
+
+});
+
