@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AnnonceController;
+use App\Http\Controllers\TerrainController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +25,11 @@ Route::middleware(['cors'])->group(function(){
     Route::post('login',[UserController::class,'login']);
 });
 
-Route::group(['middleware' => 'auth.jwt,cors'], function () {
+Route::group(['middleware' => ['cors','auth.jwt']], function () {
 
-
+    Route::apiResources([
+        'annonces' => AnnonceController::class,
+        'terrains' => TerrainController::class,
+    ]);
 });
 

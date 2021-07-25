@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   form:FormGroup;
   disabled :Boolean = false;
   data:any;
-  token:any;
   error;
 
   constructor(private authService:AuthService,private formBuilder:FormBuilder,private router:Router) { }
@@ -25,9 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.authService.loggedIn()){
-        this.router.navigate(['']);
-    }
+      
     this.loginForm();
   }
 
@@ -41,8 +38,8 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.disabled=true;
-    this.authService.login(this.form.value).subscribe(res => {  
-          this.authService.setToken(res.access_token);
+    this.authService.login(this.form.value).subscribe(data => {  
+          this.authService.setToken(data['access_token']);
           this.router.navigateByUrl('/');
         },
          ResError => {   
