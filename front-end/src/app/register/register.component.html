@@ -1,1 +1,102 @@
-<p>register works!</p>
+<div class="container">
+    <div class="row justify-content-center mt-5" >
+    <div class="col-7  card px-0 pb-5">
+  
+    <div class="card-header mb-4 text-center"><h5>Inscription</h5></div>
+    <p class="text-center text-daner" [hidden]="!error"> {{  error }}</p>
+    <form (ngSubmit)="submit()" [formGroup]="form" class="card-body">
+        <div class="row">
+            <div class="col">
+                <label for="first_name">Prenom</label>
+                <input  type="text"  formControlName="first_name" id="first_name" 
+                class="form-control" placeholder="Prenom" [ngClass]="{'is-invalid':f.first_name.touched && f.first_name.errors}">
+                <div *ngIf="f.first_name.touched && f.first_name.errors" class="invalid-feedback">
+                    <div *ngIf="f.first_name.errors.required">
+                        Prénom est obligatoire
+                    </div> 
+                  </div> 
+            </div>
+            <div class="col">
+                <label for="last_name">Nom</label>
+                <input  type="text"  formControlName="last_name" id="last_name" 
+                class="form-control" placeholder="Nom" [ngClass]="{'is-invalid':f.last_name.touched && f.last_name.errors}">
+                <div *ngIf="f.last_name.touched && f.last_name.errors" class="invalid-feedback">
+                    <div *ngIf="f.last_name.errors.required">
+                        Nom est obligatoire
+                    </div> 
+                  </div> 
+            </div>
+          
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse Email </label>
+          <input  type="email" name="email" formControlName="email" id="email" 
+          class="form-control" placeholder="Adresse Email" [ngClass]="{'is-invalid':f.email.touched && f.email.errors}">
+          <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">
+                L'Adresse Email est obligatoire
+            </div> 
+            <div *ngIf="f.email.errors.email">
+                doit être une adresse email valide.
+            </div> 
+          </div> 
+          <div class="row">
+            <div class="col">
+                <label for="date_birth">Date de Naissance</label>
+                <input  type="date"  formControlName="date_birth" id="date_birth" 
+                class="form-control" placeholder="Prenom">
+               
+            </div>
+            <div class="col">
+                <label for="tel">Téléphone</label>
+                <input  type="tel"  formControlName="tel" id="tel" 
+                class="form-control" placeholder="Téléphone" [ngClass]="{'is-invalid':f.tel.touched && f.tel.errors}" >
+                <div *ngIf="f.tel.touched && f.tel.errors" class="invalid-feedback">
+                    <div *ngIf="f.tel.errors.pattern">
+                        Numero Téléphone Invalid.
+                    </div> 
+                </div>
+                
+            </div>
+            <div class="col">
+                <label for="tel">Type</label>
+                <select formControlName="type" class="form-select" >
+                        <option value="client" >Client</option>
+                        <option value="club">Club</option>
+                </select>
+                
+            </div>
+          
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input type="password" name="password" formControlName="password"  id="password"   [ngClass]="{'is-invalid':f.password.touched && f.password.errors}"
+          class="form-control" placeholder="Mot de passe">
+          <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">
+                Mot de passe est obligatoire
+            </div> 
+            <div *ngIf="f.password.errors.minlength">
+              Mot de passe doit contenir au moins 8 caractères
+            </div> 
+          </div> 
+        </div>
+        <div class="form-group">
+            <label for="cpassword">Confirm Mot de passe</label>
+            <input type="password"  formControlName="cpassword"  id="cpassword"   [ngClass]="{'is-invalid':f.cpassword.touched && f.cpassword.errors}"
+            class="form-control" placeholder="Confirm Mot de passe">
+            <div *ngIf="f.cpassword.touched && f.cpassword.errors" class="invalid-feedback">
+              <div *ngIf="f.cpassword.errors.mustMatch">
+                le mot de passe ne correspond pas
+
+              </div> 
+            </div> 
+          </div>
+  
+        <button type="submit" class="btn btn-success d-block mx-auto mt-4" [disabled]="disabled">Inscription</button>
+      </form>
+        
+    </div>
+    </div>
+  </div>

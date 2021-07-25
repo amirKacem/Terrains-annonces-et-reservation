@@ -1,1 +1,188 @@
 /* You can add global styles to this file, and also import other style files */
+/* Base Elements */
+/*
+  Base Elements
+ */
+ html,
+ body {
+   font-family: "BebasNeue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+   font-weight: 300;
+   scroll-behavior: smooth; }
+ 
+ h2, h3, h4, h5, h6 {
+   color: #000;
+   margin: 0px; }
+ 
+ p {
+   font-size: 16px;
+   margin: 0; }
+ 
+ a {
+   text-decoration: none; }
+ 
+ label {
+   font-size: 12px; }
+ 
+ header {
+   background-color: #f5f5f5; }
+ 
+ nav {
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-orient: horizontal;
+   -webkit-box-direction: normal;
+       -ms-flex-direction: row;
+           flex-direction: row;
+   -webkit-box-pack: center;
+       -ms-flex-pack: center;
+           justify-content: center;
+   -webkit-box-align: end;
+       -ms-flex-align: end;
+           align-items: end; }
+ 
+ ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0; }
+ 
+ img {
+   width: 100%;
+   height: auto; }
+/** 
+    Header
+*/
+header nav.navbar, .header nav.navbar {
+    padding: 0px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#07240a), to(#1c812a));
+    background: linear-gradient(#07240a, #1c812a);
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+    header nav.navbar .navbar__logo, .header nav.navbar .navbar__logo {
+      background-color: white;
+      padding: 0px 15px 0px 30px;
+      position: relative;
+      line-height: 50px; }
+      header nav.navbar .navbar__logo--img, .header nav.navbar .navbar__logo--img {
+        width: 180px; }
+      header nav.navbar .navbar__logo:after, .header nav.navbar .navbar__logo:after {
+        content: '';
+        position: absolute;
+        right: -25px;
+        border-top: 51px solid white;
+        border-right: 25px solid transparent;
+        width: 0; }
+    header nav.navbar .navbar__menu, .header nav.navbar .navbar__menu {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-size: 17px;
+      margin-left: 20px; }
+      header nav.navbar .navbar__menu a, header nav.navbar .navbar__menu p, .header nav.navbar .navbar__menu a, .header nav.navbar .navbar__menu p {
+        color: white;
+        text-decoration: none; }
+      header nav.navbar .navbar__menu__item, .header nav.navbar .navbar__menu__item {
+        margin: 0px 5px;
+        color: white;
+        padding: 2px 15px; }
+        header nav.navbar .navbar__menu__item.active, .header nav.navbar .navbar__menu__item.active {
+          background: -webkit-gradient(linear, left top, left bottom, from(#5ab24b), to(#2e721f));
+          background: linear-gradient(#5ab24b, #2e721f);
+          -webkit-box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+                  box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+          border-radius: 15px; }
+        header nav.navbar .navbar__menu__item:not(:first-child), .header nav.navbar .navbar__menu__item:not(:first-child) {
+          margin-left: 3rem; }
+    header nav.navbar .navbar__buttons, .header nav.navbar .navbar__buttons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin: auto; }
+      header nav.navbar .navbar__buttons .icon, .header nav.navbar .navbar__buttons .icon {
+        background-color: white;
+        padding: 5px;
+        border-radius: 50%; }
+      header nav.navbar .navbar__buttons .dropdown-item.active, header nav.navbar .navbar__buttons .dropdown-item:active, .header nav.navbar .navbar__buttons .dropdown-item.active, .header nav.navbar .navbar__buttons .dropdown-item:active {
+        background-color: white;
+        color: black; }
+      header nav.navbar .navbar__buttons a, .header nav.navbar .navbar__buttons a {
+        background: -webkit-gradient(linear, left top, left bottom, from(#5ab24b), to(#2e721f));
+        background: linear-gradient(#5ab24b, #2e721f);
+        color: white;
+        padding: 2px 15px;
+        border-radius: 15px;
+        -webkit-box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+                box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.5);
+        border: 0px;
+        font-size: 17px; }
+        header nav.navbar .navbar__buttons a:hover, .header nav.navbar .navbar__buttons a:hover {
+          opacity: 0.8; }
+          .bg-event {
+            /*background-image: url(../images/event-bg.png);*/
+            background-repeat: no-repeat;
+            background-size: 100%; }
+            .bg-event .events-boxs {
+              margin-top: 13rem;
+              -ms-flex-pack: distribute;
+                  justify-content: space-around; }
+              .bg-event .events-boxs__item {
+                position: relative;
+                padding: 0px;
+                -webkit-box-shadow: -1px 0px 5px rgba(0, 0, 0, 0.3);
+                        box-shadow: -1px 0px 5px rgba(0, 0, 0, 0.3);
+                margin: 2rem 0px;
+                border-radius: 10px;
+                overflow: hidden; }
+                .bg-event .events-boxs__item--top {
+                  position: absolute;
+                  color: white;
+                  font-size: 12px;
+                  left: 0px;
+                  top: 0px;
+                  padding: 2px 5px;
+                  background-color: rgba(0, 0, 0, 0.7); }
+                .bg-event .events-boxs__item__footer {
+                  background-color: white;
+                  padding: 10px 0px 10px 10px; }
+                  .bg-event .events-boxs__item__footer p {
+                    font-size: 15px; }
+                  .bg-event .events-boxs__item__footer .subtitle {
+                    font-size: 14px;
+                    color: #bbb; }
+                  .bg-event .events-boxs__item__footer--row {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-wrap: wrap;
+                        flex-wrap: wrap;
+                    padding: 5px 0px; }
+                .bg-event .events-boxs__item--btn {
+                  float: right;
+                  border-radius: 10px 0px 0px 10px;
+                  padding: 5px 20px; }
+            .bg-event .tabs a {
+              color: #000;
+              text-align: center; }
+            .bg-event .tabs__item .active {
+              border-bottom: 2px solid #187224; }
+            .bg-event .social-media-icons {
+              position: absolute;
+              top: 50%;
+              right: -100px; }
+              footer, .footer {
+                background-color: #799a7d;
+                padding: 10px 0px;
+                position: absolute;
+                bottom: 0px;
+                width: 100%; }
+                footer p, .footer p {
+                  text-align: center;
+                  margin-bottom: 0px;
+                  color: white; }
+.btn-success {
+  background: linear-gradient(#5ab24b, #2e721f);
+}

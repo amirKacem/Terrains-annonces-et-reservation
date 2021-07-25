@@ -8,9 +8,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   form:FormGroup;
-  submited=false;
+  disabled :Boolean = false;
   data:any;
   token:any;
+  error;
 
   constructor(private authService:AuthService,private formBuilder:FormBuilder) { }
   
@@ -30,15 +31,24 @@ export class LoginComponent implements OnInit {
   }
 
   submit(){
-
-    this.submited=true;
+  
     if(this.form.invalid){
       return;
     }
-    this.authService.login(this.form.value).subscribe(res => {
-      console.log(res);
-      this.data = res;
-    });
+    this.disabled=true;
+    this.authService.login(this.form.value).subscribe(res => {  
+          this.data = res;
+        },
+         error => {
+           console.log(error)
+           
+            this.showErrors(error)
+         }   
+    );
+  }
+  showErrors(error){
+    this.disabled=false;
+    this.error = error.message;
   }
 
 }
