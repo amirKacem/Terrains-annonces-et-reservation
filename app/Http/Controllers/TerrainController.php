@@ -26,7 +26,9 @@ class TerrainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   if($request->hasFile('image')){
+    {   
+        
+        if($request->hasFile('image')){
          
             $completeFileName = $request->file('image')->getClientOriginalName();
             $fileName = pathinfo($completeFileName,PATHINFO_FILENAME);
