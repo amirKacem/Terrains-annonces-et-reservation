@@ -5,16 +5,19 @@
                 <img class="navbar__logo--img" src="./assets/images/Ulogofootballlong.png" alt="">
             </div>
            
-            <ul class="navbar__menu d-flex">
-                <li class="navbar__menu__item active"  *ngIf="authService.loggedIn()">
-                 <a href="home.html">Home</a> 
+            <ul class="navbar__menu d-flex" *ngIf="authService.loggedIn()">
+                <li class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                 <a routerLink="/" >Accueil</a> 
                 </li>
+                <li class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                    <a routerLink="/terrains" >Terrains</a> 
+                   </li>
            
                  
                
             </ul>
-
-            <div class="navbar__buttons">
+            
+            <div class="navbar__buttons" [ngStyle]="{'margin-left': 'auto', 'margin-right':'2em'}">
                 <a *ngIf="!authService.loggedIn()" routerLink="/login" class="btn  btn-sm mx-2" >Se Connecter</a>
                 <a *ngIf="!authService.loggedIn()" routerLink="/register"  class="btn btn-sm">Inscription</a>
                 <a *ngIf="authService.loggedIn()" routerLink="/register"  class="btn btn-sm" (click)="authService.logout()">Deconnexion</a>

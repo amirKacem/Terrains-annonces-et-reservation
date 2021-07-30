@@ -1,0 +1,31 @@
+<div class="container">
+    <img src="http://127.0.0.1:8000/{{ terrain.image  }}" alt="{{ terrain.nom }}" style="max-height:300px">
+    <div class="row justify-content-center">
+      
+
+    <div class="col-10   px-0 py-5">
+        <div class="row py-2 border-dark shadow  bg-body rounded text-center">
+            <div class="col-6">
+                <p><span class="fw-bolder ">Nom: </span>{{ terrain.nom }}</p>
+            </div>
+            <div class="col-6">
+                <p><span class="fw-bolder">Titre: </span>{{ terrain.title }}</p>
+            </div>
+        </div>
+        <div class="row py-2 border-dark shadow  bg-body rounded mt-4 text-center">
+            <div class="col-6">
+                <p><span class="fw-bolder ">Longueur: </span>{{ terrain.longueur }}</p>
+            </div>
+            <div class="col-6">
+                <p><span class="fw-bolder">Largeur: </span>{{ terrain.largeur }}</p>
+            </div>
+        </div>
+        <div class="row py-2 border-dark shadow  bg-body rounded mt-4 text-center">
+            <div class="col-12">
+                <p><span class="fw-bolder ">Description: </span><br/>
+                    {{ terrain.description }}</p>
+            </div>
+           
+        </div>
+    </div>
+  </div>

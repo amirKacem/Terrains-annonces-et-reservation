@@ -1,0 +1,72 @@
+<form (ngSubmit)="addTerrain()" [formGroup]="form" class="card-body">
+    <div class="row">
+        <div class="col">
+            <label for="nom">Nom</label>
+            <input  type="text"  formControlName="nom" id="nom" 
+            class="form-control" placeholder="Nom" [ngClass]="{'is-invalid':( submited || f.nom.touched) && f.nom.errors}">
+            <div *ngIf="(submited || f.nom.touched) && f.nom.errors" class="invalid-feedback">
+                <div *ngIf="f.nom.errors.required">
+                    Nom est obligatoire
+                </div> 
+              </div> 
+        </div>
+        <div class="col">
+            <label for="title">Title</label>
+            <input  type="text"  formControlName="title" id="title" 
+            class="form-control" placeholder="title" [ngClass]="{'is-invalid':(submited || f.title.touched) && f.title.errors}">
+            <div *ngIf="(submited || f.title.touched)  && f.title.errors" class="invalid-feedback">
+                <div *ngIf="f.title.errors.required">
+                    Title est obligatoire
+                </div> 
+              </div> 
+        </div>
+        <div class="col-12">
+            <label for="title">Description</label>
+            <textarea  type="number"  formControlName="description" id="description" 
+            class="form-control" placeholder="Description" [ngClass]="{'is-invalid':(submited || f.description.touched) && f.description.errors}"></textarea>
+            <div *ngIf="(submited || f.description.touched) && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">
+                    Description est obligatoire
+                </div> 
+              </div> 
+        </div>
+        <div class="col">
+            <label for="nom">Longeur</label>
+            <input  type="number"  formControlName="longueur" id="longueur"  step="0.1"
+            class="form-control" placeholder="Longueur" [ngClass]="{'is-invalid':(submited || f.longueur.touched) && f.longueur.errors}">
+            <div *ngIf="(submited || f.longueur.touched) && f.longueur.errors" class="invalid-feedback">
+                <div *ngIf="f.longueur.errors.required">
+                    Longeur est obligatoire
+                </div>
+                <div *ngIf="f.longueur.errors.pattern">
+                    La longueur doit être un nombre
+                </div> 
+              </div> 
+        </div>
+        <div class="col">
+            <label for="largeur">Largeur</label>
+            <input  type="number"  formControlName="largeur" id="largeur"  step="0.1"
+            class="form-control" placeholder="Largeur" [ngClass]="{'is-invalid':(f.largeur.touched || submited)  && f.largeur.errors}">
+            <div *ngIf="(f.largeur.touched || submited) && f.largeur.errors" class="invalid-feedback">
+                <div *ngIf="f.largeur.errors.required">
+                    Largeur est obligatoire
+                </div> 
+                <div *ngIf="f.largeur.errors.pattern">
+                    La Largeur doit être un nombre
+                </div> 
+              </div> 
+        </div>
+        <div class="col-12">
+            <label for="image" class="form-label">Photo</label>
+            <input (change)="changeFile($event)" formControlName="image" class="form-control" type="file" id="image" [ngClass]="{'is-invalid':submited  && f.image.errors}">
+            <div *ngIf=" submited  && f.image.errors" class="invalid-feedback">
+                <div *ngIf="f.image.errors.required">
+                    L'image est obligatoire
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <button type="submit" class="btn btn-success d-block mx-auto mt-4" >Ajouter</button>
+</form>
+

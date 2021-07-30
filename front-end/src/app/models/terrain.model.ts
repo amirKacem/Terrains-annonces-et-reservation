@@ -3,9 +3,8 @@ export interface Terrain {
     nom:string,
     title:string,
     description:string,
-    longeur:number,
+    longueur:number,
     largeur:number,
-    created_at:string;
-    updated_at:string
+    image:any
 }
 

@@ -1,4 +1,54 @@
+    <!-- main -->
+    <main class="main-content">
+        <div class="container">
+            <div class="col-10 mx-auto  justify-content-center bg-event">
+               
+                    <div class="row events-boxs">
+                        <div class="accordion accordion-flush" id="annonce">
+                            <div class="accordion-item  ">
+                                <h2 class="accordion-header" id="flush-headingOne"></h2>
+                                <button class="btn btn-success d-block mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#add-annonce" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Ajouter Annonce<i class="fa fa-angle-double-down p-2" aria-hidden="true"></i>
+                                </button>
+                                
+                                <div id="add-annonce" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#annonce">
+                                <div class="accordion-body shadow-sm p-3 mb-5 bg-body rounded">
+                              
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        <div *ngFor="let annonce of annonces" class="col-5 events-boxs__item">
+                            <img src="assets/images/event/event-banner2.png" alt="">
+                            <div class="events-boxs__item__footer">
+                                <div class="border-bottom-grey events-boxs__item__footer--row">
+                                
+                                    <div class="col-8 p-0">
+                                        <p>Wearing masks and blowing candles, we,  </p>
+                                        <p class="subtitle">you and them, ah ah ah ah ah ah ah ah</p>
+                                    </div>
+                                    <div class="col-4 p-0">
+                                        <button class="btn btn-dark events-boxs__item--btn">processing</button>
+                                    </div>
+                                </div>
+                               
+                                <div class=" events-boxs__item__footer--row">
+                                    <div class="col-8 p-0">
+                                        <p class="subtitle">339015 watching</p>
+                                    </div>
+                                    <div class="col-4 p-0">
+                                        <p class="subtitle">01/02/2021 - 15/02/2021</p>
+                                        <p class="date font-weight-bold text-right mr-3">09 ：60 ：00</p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div> 
 
-<div>
-    
-</div>
+                    </div>
+               
+               
+            </div>
+        </div> 
+ 
+    </main>  
+    <!-- main -->

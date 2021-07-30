@@ -10,6 +10,11 @@ import { HttpClientModule,HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/co
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AddAnnonceComponent } from './home/add-annonce/add-annonce.component';
+import { TerrainsComponent } from './terrains/terrains.component';
+import { AddTerrainComponent } from './terrains/add-terrain/add-terrain.component';
+
+import { TerrainDetailComponent } from './terrains/terrain-detail/terrain-detail.component';
 
 
 
@@ -19,7 +24,11 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddAnnonceComponent,
+    TerrainsComponent,
+    AddTerrainComponent,
+    TerrainDetailComponent
   ],
   imports: [
     BrowserModule,

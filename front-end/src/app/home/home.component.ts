@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
       },
       (error) => {
         if(error.status=== 401){
+          localStorage.removeItem('token');
           this.router.navigate(['login']);
         }
       }

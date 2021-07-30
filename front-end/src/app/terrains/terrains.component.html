@@ -1,0 +1,56 @@
+<main class="main-content ">
+    <div class="container bg-terrains">
+   
+        <div class="right-block-header">
+            <div class="search-box">
+                <div class="form-group row pt-5">
+                    <label for="search" class="col-1 fs-4 fw-bold col-form-label text-white">Terrain:</label> 
+                    <div class="col-3 align-self-center">
+                        <input class="form-control rounded-3 " id="search" name="search" 
+                        type="search" placeholder="Chercher " [(ngModel)]="terrainNom" (keyup)="search()" />
+                   
+                    </div>
+
+                </div>
+                
+            </div>
+
+        </div>
+            <div class="row news-boxs justify-content-center ">
+                <div class="accordion accordion-flush my-5" id="terrain">
+                    <div class="accordion-item ">
+                        <h2 class="accordion-header" id="flush-headingOne"></h2>
+                        <button class="btn btn-success d-block mx-auto" type="button" data-bs-toggle="collapse" data-bs-target="#add-terrain" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Ajouter Terrain<i class="fa fa-angle-double-down p-2" aria-hidden="true"></i>
+                        </button>
+                        
+                        <div id="add-terrain" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#terrain">
+                        <div class="accordion-body shadow-sm p-3 mb-5 bg-body rounded">
+                            <add-terrain></add-terrain>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                <div *ngFor="let terrain of terrainsFilter" class="col-10 news-boxs__item">
+                    <div class="row">
+                        <div class="col-4  p-1">
+                        <a [routerLink]="['/terrain/detail',terrain.id]">
+                            <img width="380" height="220" src="http://127.0.0.1:8000/{{ terrain.image  }}" alt="{{ terrain.nom }}">
+                        </a>
+                        </div>
+                        <div class="col-8 news-boxs__item--right">
+                            <p>
+                                {{terrain.nom}}
+                                    <p>{{ terrain.description.substring(0,250)  }} ...</p>
+                                    <div class="d-flex justify-content-around my-2">
+                                        <p>Longueur: {{ terrain.longueur }}</p>
+                                        <p>Largeur: {{ terrain.longueur }}</p>
+                                    </div>
+                                <p class="subtitle text-end">Date D'ajout:  {{ terrain.created_at }}</p>
+                        </div>
+                 </div>
+                </div>
+            </div>
+    </div>
+    
+</main>
