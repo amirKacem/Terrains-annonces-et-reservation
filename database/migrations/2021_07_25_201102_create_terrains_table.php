@@ -18,7 +18,7 @@ class CreateTerrainsTable extends Migration
             $table->string('nom');
             $table->string('title')->nullable();
             $table->text('description');
-            $table->decimal('longeur');
+            $table->decimal('longueur');
             $table->decimal('largeur');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -32,7 +32,7 @@ class CreateTerrainsTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('terrains');
+    {      
+        Schema::drop('terrains');
     }
 }

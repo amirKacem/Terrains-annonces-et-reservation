@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Terrain;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TerrainController extends Controller
 {
@@ -25,8 +26,27 @@ class TerrainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   if($request->hasFile('image')){
+         
+            $completeFileName = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($completeFileName,PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $imageName = $fileName.'_'.rand().'_'.time().'.'.$extension; 
+             $request->file('image')->storeAs('public/terrains',$imageName);
+            $path = "storage/terrains/".$imageName;
+        }
+        $user = Auth::user();
+        Terrain::create([
+            'nom'=> $request->nom,
+            'title'=>$request->title,
+            'description'=> $request->description,
+            'largeur'=> $request->largeur,
+            'longueur'=>$request->longueur,
+            'image'=>$path,
+            'user_id'=> $user->id
+            
+        ]);
+        return ['status'=>true,'message'=>'le terrain a été ajouté'];
     }
 
     /**
@@ -37,7 +57,8 @@ class TerrainController extends Controller
      */
     public function show($id)
     {
-        //
+        $annonce = Terrain::findOrFail($id);
+        return response()->json($annonce);  
     }
 
     /**
@@ -60,6 +81,8 @@ class TerrainController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $terrain = Terrain::find($id);
+        $terrain->delete();
+        return response()->json(['success'=>"le terrain a été supprimé"]);
     }
 }

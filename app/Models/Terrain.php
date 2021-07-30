@@ -11,6 +11,10 @@ class Terrain extends Model
 
     public $guarded = [];
 
+    protected $casts =[
+        'created_at'=> 'date:Y-m-d',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

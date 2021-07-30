@@ -37,7 +37,8 @@ class AnnonceController extends Controller
      */
     public function show($id)
     {
-        //
+        $annonce = Annonce::findOrFail($id);
+        return response()->json($annonce);  
     }
 
     /**
@@ -60,6 +61,8 @@ class AnnonceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $annonce = Annonce::find($id);
+        $annonce->delete();
+        return response()->json(['success'=>"l'annonce a été supprimée"]);
     }
 }

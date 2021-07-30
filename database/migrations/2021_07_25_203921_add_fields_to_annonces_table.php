@@ -27,7 +27,8 @@ class AddFieldsToAnnoncesTable extends Migration
     public function down()
     {
         Schema::table('annonces', function (Blueprint $table) {
-            //
+            $table->dropForeign('annonces_terrain_id_foreign');
+            $table->dropColumn('terrain_id');
         });
     }
 }
