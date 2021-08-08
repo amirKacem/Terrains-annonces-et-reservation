@@ -252,3 +252,67 @@ header nav.navbar, .header nav.navbar {
   outline: 0;
   box-shadow: unset;
 }
+
+/*SIDEBAR TABS */
+/* Nav tabs */
+.account .nav-tabs__item {
+  color: #878787; }
+  .account .nav-tabs__item:hover {
+    color: #878787; }
+
+.nav-tabs {
+  margin-top: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-bottom: unset; }
+  .nav-tabs__item {
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    padding: 10px 0px; }
+    .nav-tabs__item.active {
+      background-color: #b6dcbb;
+      background: -webkit-gradient(linear, left top, right top, from(#fff), color-stop(#b6dcbb), to(#fff));
+      background: linear-gradient(to right, #fff, #b6dcbb, #fff); }
+    .nav-tabs__item:hover {
+      color: black; }
+  .nav-tabs .account-detail {
+    margin-bottom: 2rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto; }
+    .nav-tabs .account-detail .avatar_img {
+      border-radius: 50%;
+      border: 2px solid #187224;
+      max-height: 150px;
+      width: 150px;
+      margin: auto;
+      display: block; }
+    .nav-tabs .account-detail .team {
+      font-size: 20px; }
+    .nav-tabs .account-detail__follow {
+      font-size: 20px;
+      border-bottom: 1px solid #36a424; }
+    .nav-tabs .account-detail p, .nav-tabs .account-detail span, .nav-tabs .account-detail a {
+      text-align: center;
+      color: #878787; }
+      .nav-tabs .account-detail p span, .nav-tabs .account-detail span span, .nav-tabs .account-detail a span {
+        color: #36a424; }
+    .nav-tabs .account-detail .flag__img {
+      width: 30px; }
+      .tabs--col {
+        padding: 0;
+        -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3); 
+                height: 100vh;
+              }
+
+              /* sweet alert */
+              .swal2-styled.swal2-confirm:focus{
+                box-shadow: unset;
+              }

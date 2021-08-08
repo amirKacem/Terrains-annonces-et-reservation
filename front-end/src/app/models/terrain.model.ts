@@ -1,5 +1,5 @@
 export interface Terrain {
-    id:number,
+    id:string,
     nom:string,
     title:string,
     description:string,

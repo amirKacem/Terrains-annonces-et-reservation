@@ -1,0 +1,51 @@
+<main class="main-content">
+    <div class="d-flex">
+        
+        <sidebar class="col-3 tabs--col bg-white pb-5"></sidebar>
+        <div class="col-9  pl-5 right-block">
+            <div class="container">
+            <div class="row mt-4">
+                <div class="col-10">
+                    <h2 class="mb-4">Terrains</h2>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Title</th>
+                            <th>Largeur</th>
+                            <th>Longueur</th>
+                            <th>Action</th>
+                        </tr>
+               
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let terrain of terrains">
+                          <td>{{ terrain.id }}</td>
+                          <td>{{  terrain.nom }}</td>
+                          <td>{{ terrain.title }}</td>
+                          <td>{{  terrain.longueur }}</td>
+                          <td>{{ terrain.largeur }}</td>
+                        <td>
+                            <a [routerLink]="['/terrain/detail',terrain.id]" class="btn  btn-secondary btn-sm mx-1"><i class="fa fa-info"></i></a>
+                            <a [routerLink]="['/terrain/update',terrain.id]" class="btn  btn-success btn-sm mx-1"><i class="fa fa-edit"></i></a>
+                        
+                            <a (click)="confirmDelete(terrain.id)" class="btn  btn-danger btn-sm mx-1"><i class="fa fa-trash"></i></a>
+                        </td>
+                          
+                        </tr>
+                      </tbody>
+                </table>
+                </div>
+            </div>
+                
+            </div>
+
+    
+            
+        </div>  
+        <!-- right block -->
+    </div>
+
+</main>  
+<!-- main -->

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Terrain } from '../models/terrain.model';
 import { TerrainsService } from '../services/terrains.service';
 
@@ -16,7 +17,7 @@ export class TerrainsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.terrainService.subject.subscribe((terrain) => {
+    this.terrainService.subject.subscribe(() => {
       this.getAllTerrains();
     });
     this.getAllTerrains();
@@ -29,7 +30,6 @@ export class TerrainsComponent implements OnInit {
         this.terrainsFilter = data;
     },
     (error) => {
-      console.log(error);
       if(error.status=== 401){
         localStorage.removeItem('token');
         this.router.navigate(['login']);

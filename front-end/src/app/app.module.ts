@@ -15,7 +15,12 @@ import { TerrainsComponent } from './terrains/terrains.component';
 import { AddTerrainComponent } from './terrains/add-terrain/add-terrain.component';
 
 import { TerrainDetailComponent } from './terrains/terrain-detail/terrain-detail.component';
-
+import { UserTerrainsComponent } from './user-terrains/user-terrains.component';
+import { UserAnnoncesComponent } from './user-annonces/user-annonces.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UpdateTerrainComponent } from './terrains/update-terrain/update-terrain.component';
 
 
 @NgModule({
@@ -28,14 +33,20 @@ import { TerrainDetailComponent } from './terrains/terrain-detail/terrain-detail
     AddAnnonceComponent,
     TerrainsComponent,
     AddTerrainComponent,
-    TerrainDetailComponent
+    TerrainDetailComponent,
+    UserTerrainsComponent,
+    UserAnnoncesComponent,
+    SidebarComponent,
+    UpdateTerrainComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

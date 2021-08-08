@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms'
 import { Terrain } from 'src/app/models/terrain.model';
 import { TerrainsService } from 'src/app/services/terrains.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'add-terrain',
   templateUrl: './add-terrain.component.html',
@@ -12,7 +13,7 @@ export class AddTerrainComponent implements OnInit {
   submited:boolean=false;
   file:any;
   terrain:Terrain;
-  constructor(private formBuilder:FormBuilder,private terrainService:TerrainsService) { }
+  constructor(private formBuilder:FormBuilder,private terrainService:TerrainsService,private toastr:ToastrService) { }
 
   ngOnInit() {
     this.addTerrainForm();
@@ -40,11 +41,19 @@ export class AddTerrainComponent implements OnInit {
     if(this.form.invalid){
       return;
     }
-    this.terrainService.addTerrain(this.form.value).subscribe((res)=> {
+    this.terrainService.addTerrain(this.terrain).subscribe((res)=> {
         this.submited=false;
         this.form.reset();
+        this.toastr.success(res.message,"200",{
+          timeOut:2000,
+          progressBar:true
+        });
     },error => {
       console.log(error);
+      this.toastr.error("Error",error.status,{
+        timeOut:2000,
+        progressBar:true
+      });
     })
 
  
