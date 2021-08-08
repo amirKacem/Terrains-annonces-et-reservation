@@ -71,8 +71,33 @@ class TerrainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+     
+        $terrain = Terrain::findOrFail($id);
+        $user_id = Auth::user()->id;
+        if($user_id==$terrain->user_id){
+            $data = [
+                'nom'=> $request->nom,
+                'title'=>$request->title,
+                'description'=> $request->description,
+                'largeur'=> $request->largeur,
+                'longueur'=>$request->longueur,
+            ];
+        if($request->hasFile('image')){
+         
+            $completeFileName = $request->file('image')->getClientOriginalName();
+            $fileName = pathinfo($completeFileName,PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $imageName = $fileName.'_'.rand().'_'.time().'.'.$extension; 
+             $request->file('image')->storeAs('public/terrains',$imageName);
+            $path = "storage/terrains/".$imageName;
+            $data['image']= $path;
+        }
+        $terrain->update($data);
+        return ['status'=>true,'message'=>'le terrain a été mis a jour'];
+        }else{
+            return response()->json(['message' => 'Unauthorized.'], 401); 
+        }
     }
 
     /**
@@ -82,9 +107,17 @@ class TerrainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   
+
+        $user_id = Auth::user()->id;
+      
         $terrain = Terrain::find($id);
-        $terrain->delete();
-        return response()->json(['success'=>"le terrain a été supprimé"]);
+        if($user_id==$terrain->user_id){
+            $terrain->delete();
+            return response()->json(['message'=>"le terrain a été supprimé"]);
+        }else{
+            return response()->json(['message' => 'Unauthorized.'], 401);
+        }
+    
     }
 }

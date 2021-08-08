@@ -42,6 +42,21 @@ class UserController extends Controller
 
     }
 
+    public function getUserTerrains(){
+        $user = Auth::user();
+    
+        if($user->type=="client"){
+            return response()->json(['error' => 'Unauthorized.'], 401);
+        }
+        $terrains = $user->terrains;
+        return response()->json($terrains);
+    }
+
+    public function getUserAnnonces(){
+        $annonces = Auth::user()->annonces;
+        return response()->json($annonces);
+    }
+
 
 
      /**

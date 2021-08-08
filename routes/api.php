@@ -31,5 +31,10 @@ Route::group(['middleware' => ['cors','auth.jwt']], function () {
         'annonces' => AnnonceController::class,
         'terrains' => TerrainController::class,
     ]);
+
+    Route::post('terrains/{terrain}',[TerrainController::class,'update']);
+
+    Route::get('user/terrains',[UserController::class,'getUserTerrains']);
+    Route::get('user/annonces',[UserController::class,'getUserAnnonces']);
 });
 
