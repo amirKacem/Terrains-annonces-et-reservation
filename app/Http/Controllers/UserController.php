@@ -42,6 +42,42 @@ class UserController extends Controller
 
     }
 
+    public function update(Request $request){
+        $request->validate([
+            'first_name'=>'required',
+            'email'=>'required|unique:users,email,'.Auth::user()->id,
+            'last_name'=> 'required'
+        ]);
+        $data = [
+            'email'=>$request->email,
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'date_birth'=> $request->date_birth,
+            'tel'=> $request->tel
+        ];
+        if(!empty($request->password)){
+            $password = Hash::make($request->password);
+            $data['password'] = $password;
+        }
+        User::find(Auth::user()->id)->update($data);
+
+        return response()->json(['message'=> 'l\'utilisateur a été mis à jour','status'=>200]);
+
+    }
+
+    public function getAuthUserInfo(){
+        $user = Auth::user();
+        $data = [
+            'email'=>$user->email,
+            'first_name'=> $user->first_name,
+            'last_name'=> $user->last_name,
+            'tel' => $user->tel,
+            'date_birth' => $user->date_birth,
+            'type'=> $user->type
+        ];
+        return response()->json($data);
+    }
+
     public function getUserTerrains(){
         $user = Auth::user();
     
