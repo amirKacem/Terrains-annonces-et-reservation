@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Annonce } from '../models/annonce.model';
 import { AnnoncesService } from '../services/annonces.service';
 
@@ -12,17 +13,22 @@ export class HomeComponent implements OnInit {
 
   annonces: Annonce[]=[];
 
-  constructor(private annonceService:AnnoncesService,private router:Router) { }
+  constructor(private annonceService:AnnoncesService,
+              private router:Router,
+              private toastr:ToastrService
+              ) { }
 
   ngOnInit() {
-
+    this.annonceService.subject.subscribe(() => {
+      this.getAllAnnonces();
+    });
     this.getAllAnnonces();
   }
 
   getAllAnnonces(){
     this.annonceService.getAllAnnonces().subscribe(
       (data)=>{
-          console.log(data);
+          this.annonces = data;
       },
       (error) => {
         if(error.status=== 401){
@@ -31,6 +37,23 @@ export class HomeComponent implements OnInit {
         }
       }
       )
+  }
+
+  reservation(id:string){
+    this.annonceService.reservation(id).subscribe(
+      (res) => {
+        this.toastr.success(res.message,res.status,{
+          timeOut:2000,
+          progressBar:true
+        });
+      },
+      (error)=> {
+        this.toastr.error(error.message,error.status,{
+          timeOut:2000,
+          progressBar:true
+        });
+      }
+    )
   }
 
 }

@@ -13,32 +13,40 @@
                                 
                                 <div id="add-annonce" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#annonce">
                                 <div class="accordion-body shadow-sm p-3 mb-5 bg-body rounded">
-                              
+                                    <add-annonce></add-annonce>
                                     </div>
                                 </div>
                             </div>
                          </div>
                         <div *ngFor="let annonce of annonces" class="col-5 events-boxs__item">
-                            <img src="assets/images/event/event-banner2.png" alt="">
+                            <img src="http://127.0.0.1:8000/{{ annonce.image  }}"  style="height:230px">
                             <div class="events-boxs__item__footer">
                                 <div class="border-bottom-grey events-boxs__item__footer--row">
                                 
                                     <div class="col-8 p-0">
-                                        <p>Wearing masks and blowing candles, we,  </p>
-                                        <p class="subtitle">you and them, ah ah ah ah ah ah ah ah</p>
+                                        <p>{{ annonce.title }} </p>
+                                        <p class="subtitle">{{ annonce.description.substring(0,100)  }} ...</p>
                                     </div>
                                     <div class="col-4 p-0">
-                                        <button class="btn btn-dark events-boxs__item--btn">processing</button>
+                                        <button (click)="reservation(annonce.id)" *ngIf="annonce.reserved==0" class="btn btn-success events-boxs__item--btn mt-5">
+                                            
+                                            Réservation
+                                        </button>
+                                        <span  *ngIf="annonce.reserved==1" class=" text-success events-boxs__item--btn mt-5">
+                                            Réservé <i class="fa fa-check-circle text-success"></i>
+                                          
+                                        </span>
+                                       
                                     </div>
                                 </div>
                                
                                 <div class=" events-boxs__item__footer--row">
                                     <div class="col-8 p-0">
-                                        <p class="subtitle">339015 watching</p>
+                                        <p class="subtitle">Heure de début - Heure de Fin</p>
                                     </div>
                                     <div class="col-4 p-0">
-                                        <p class="subtitle">01/02/2021 - 15/02/2021</p>
-                                        <p class="date font-weight-bold text-right mr-3">09 ：60 ：00</p>
+                                        <p class="subtitle">{{annonce.start_hour }} - {{ annonce.end_hour }}</p>
+                                        <p class="date font-weight-bold text-end me-3"> {{ annonce.created_at }}</p>
                                         </div>
                                 </div>
                             </div>

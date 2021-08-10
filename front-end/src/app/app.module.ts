@@ -21,6 +21,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateTerrainComponent } from './terrains/update-terrain/update-terrain.component';
+import { AnnonceDetailComponent } from './home/annonce-detail/annonce-detail.component';
+import { UpdateAnnonceComponent } from './home/update-annonce/update-annonce.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { UpdateTerrainComponent } from './terrains/update-terrain/update-terrain
     UserTerrainsComponent,
     UserAnnoncesComponent,
     SidebarComponent,
-    UpdateTerrainComponent
+    UpdateTerrainComponent,
+    AnnonceDetailComponent,
+    UpdateAnnonceComponent
   ],
   imports: [
     BrowserModule,

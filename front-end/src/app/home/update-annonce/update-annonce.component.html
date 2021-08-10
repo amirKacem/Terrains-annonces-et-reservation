@@ -1,4 +1,5 @@
-<form (ngSubmit)="addAnnonce()" [formGroup]="form" class="card-body">
+<div class="container" *ngIf="annonce">
+<form (ngSubmit)="updateAnnonce()" [formGroup]="form" class="card-body">
     <div class="row">
         <div class="col">
             <label for="title">Titre</label>
@@ -10,14 +11,7 @@
                 </div> 
               </div> 
         </div>
-        <div class="col">
-            <label for="terrain">Terrain</label>
-            <select formControlName="terrain_id" class="form-select"  id="terrain" >
-                    <option *ngFor="let terrain of terrains" [value]="terrain.id" >{{ terrain.nom }}</option>
-                    
-            </select>
-         
-        </div>
+    
         <div class="col-12">
             <label for="description">Description</label>
             <textarea  type="number"  formControlName="description" id="description" 
@@ -51,16 +45,11 @@
               </div> 
         </div>
         <div class="col-12">
-            <label for="image" class="form-label">Photo</label>
-            <input (change)="changeFile($event)" formControlName="image" class="form-control" type="file" id="image" [ngClass]="{'is-invalid':submited  && f.image.errors}">
-            <div *ngIf=" submited  && f.image.errors" class="invalid-feedback">
-                <div *ngIf="f.image.errors.required">
-                    L'image est obligatoire
-                </div>
-            </div>
+            <label for="image" class="form-label">Photo (laissez-le vide pour ne pas mettre à jour) </label>
+            <input (change)="changeFile($event)" formControlName="image" class="form-control" type="file" id="image">
         </div>
         
     </div>
-    <button type="submit" class="btn btn-success d-block mx-auto mt-4" >Ajouter</button>
+    <button type="submit" class="btn btn-success d-block mx-auto mt-4" >Modifier</button>
 </form>
-
+</div>

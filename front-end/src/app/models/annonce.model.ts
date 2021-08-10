@@ -1,10 +1,10 @@
 export interface Annonce {
-    id:number,
+    id:string,
     title:string,
     description:string,
-    image:string,
+    image:any,
     start_hour:string,
     end_hour:string,
-    created_at:string,
-    updated_at:string
+    reserved:boolean,
+    terrain_id:string
 }

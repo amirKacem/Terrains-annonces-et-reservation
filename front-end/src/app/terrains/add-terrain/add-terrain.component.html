@@ -21,7 +21,7 @@
               </div> 
         </div>
         <div class="col-12">
-            <label for="title">Description</label>
+            <label for="description">Description</label>
             <textarea  type="number"  formControlName="description" id="description" 
             class="form-control" placeholder="Description" [ngClass]="{'is-invalid':(submited || f.description.touched) && f.description.errors}"></textarea>
             <div *ngIf="(submited || f.description.touched) && f.description.errors" class="invalid-feedback">

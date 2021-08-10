@@ -1,1 +1,52 @@
-<p>user-annonces works!</p>
+<main class="main-content">
+    <div class="d-flex">
+        
+        <sidebar class="col-3 tabs--col bg-white pb-5"></sidebar>
+        <div class="col-9  pl-5 right-block">
+            <div class="container">
+            <div class="row mt-4">
+                <div class="col-10">
+                    <h2 class="mb-4">Annonces</h2>
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titre</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>réservé</th>
+                            <th>Action</th>
+                        </tr>
+               
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let annonce of annonces">
+                          <td>{{ annonce.id }}</td>
+                          <td>{{ annonce.title }}</td>
+                          <td>{{  annonce.start_hour }}</td>
+                        
+                          <td>{{ annonce.end_hour }}</td>
+                          <td> <span [ngClass]="annonce.reserved == 0  ? ['badge','bg-danger'] : ['badge','bg-success'] "> {{ annonce.reserved == 0  ? 'Non' : 'Oui' }} </span></td>
+                        <td>
+                            <a [routerLink]="['/annonce/detail',annonce.id]" class="btn  btn-secondary btn-sm mx-1"><i class="fa fa-info"></i></a>
+                            <a [routerLink]="['/annonce/update',annonce.id]" class="btn  btn-success btn-sm mx-1"><i class="fa fa-edit"></i></a>
+                        
+                            <a (click)="confirmDelete(annonce.id)" class="btn  btn-danger btn-sm mx-1"><i class="fa fa-trash"></i></a>
+                        </td>
+                          
+                        </tr>
+                      </tbody>
+                </table>
+                </div>
+            </div>
+                
+            </div>
+
+    
+            
+        </div>  
+        <!-- right block -->
+    </div>
+
+</main>  
+<!-- main -->

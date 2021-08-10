@@ -60,8 +60,6 @@ export class AddTerrainComponent implements OnInit {
   }
   
   changeFile(event){
-    this.file = event.target.files[0];
-    console.log(this.file);
-   
+    this.file = event.target.files[0];   
   }
 }
