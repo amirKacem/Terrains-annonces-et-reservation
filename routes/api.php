@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\TerrainController;
 use App\Http\Controllers\UserController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,9 @@ Route::group(['middleware' => ['cors','auth.jwt']], function () {
     ]);
 
     Route::post('terrains/{terrain}',[TerrainController::class,'update']);
+    Route::post('annonces/{annonce}',[AnnonceController::class,'update']);
+
+    Route::post('annonces/{id}/reservation',[AnnonceController::class,'reservation']);
 
     Route::get('user/terrains',[UserController::class,'getUserTerrains']);
     Route::get('user/annonces',[UserController::class,'getUserAnnonces']);
