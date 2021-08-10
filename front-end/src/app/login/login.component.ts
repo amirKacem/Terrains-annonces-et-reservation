@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   form:FormGroup;
-  disabled :Boolean = false;
   data:any;
   error;
+  submited:boolean = false;
 
   constructor(private authService:AuthService,private formBuilder:FormBuilder,private router:Router) { }
   
@@ -33,22 +33,21 @@ export class LoginComponent implements OnInit {
   }
 
   submit(){
-  
+    this.submited = true;
     if(this.form.invalid){
       return;
     }
-    this.disabled=true;
     this.authService.login(this.form.value).subscribe(data => {  
           this.authService.setToken(data['access_token']);
           this.router.navigateByUrl('/');
         },
-         ResError => {   
+         ResError => {
+           this.submited = false;
             this.showErrors(ResError)
          }   
     );
   }
   showErrors(res){
-    this.disabled=false;
     this.error = res.error.error;
   }
 

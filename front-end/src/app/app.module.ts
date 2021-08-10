@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UpdateTerrainComponent } from './terrains/update-terrain/update-terrain.component';
 import { AnnonceDetailComponent } from './home/annonce-detail/annonce-detail.component';
 import { UpdateAnnonceComponent } from './home/update-annonce/update-annonce.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { UpdateAnnonceComponent } from './home/update-annonce/update-annonce.com
     SidebarComponent,
     UpdateTerrainComponent,
     AnnonceDetailComponent,
-    UpdateAnnonceComponent
+    UpdateAnnonceComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

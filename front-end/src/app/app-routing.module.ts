@@ -12,6 +12,7 @@ import { UpdateTerrainComponent } from './terrains/update-terrain/update-terrain
 import { UserAnnoncesComponent } from './user-annonces/user-annonces.component';
 import { UpdateAnnonceComponent } from './home/update-annonce/update-annonce.component';
 import { AnnonceDetailComponent } from './home/annonce-detail/annonce-detail.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 const routes:Routes = [
   {path:'',component:HomeComponent,canActivate:[AuthGuardService]},
   {path:'login',component:LoginComponent},
@@ -23,6 +24,7 @@ const routes:Routes = [
   {path:'annonce/update/:id',component:UpdateAnnonceComponent,canActivate:[AuthGuardService]},
   {path:'mesTerrains',component:UserTerrainsComponent,canActivate:[AuthGuardService]},
   {path:'mesAnnonces',component:UserAnnoncesComponent,canActivate:[AuthGuardService]},
+  {path:'user/update',component:UpdateUserComponent,canActivate:[AuthGuardService]}
 
 
 ];

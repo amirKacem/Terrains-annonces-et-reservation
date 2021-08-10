@@ -13,7 +13,7 @@ import { AnnoncesService } from 'src/app/services/annonces.service';
 export class UpdateAnnonceComponent implements OnInit {
 
   form:FormGroup;
-  submited:boolean=true;
+  submited:boolean=false;
   file:any;
   annonce:Annonce;
   id:string;

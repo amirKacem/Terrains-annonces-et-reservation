@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class UpdateTerrainComponent implements OnInit {
   
   form:FormGroup;
-  submited:boolean=true;
+  submited:boolean=false;
   file:any;
   terrain:Terrain;
   id:string;
@@ -78,7 +78,7 @@ export class UpdateTerrainComponent implements OnInit {
           progressBar:true
         });
     },error => {
-  
+
       this.toastr.error("Error",error.status,{
         timeOut:2000,
         progressBar:true

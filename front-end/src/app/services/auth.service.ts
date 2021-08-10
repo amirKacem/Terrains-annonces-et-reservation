@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import  {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
+import { User } from '../models/user.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,7 +38,13 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  getCurrentUser():Observable<User>{
+    return this.http.post<User>(this.apiUrl+"/user/info",{});
+  }
 
+  updateUser(user:User):Observable<any>{
+    return this.http.put<User>(this.apiUrl+"/user/update",user);
+  }
 
 
 

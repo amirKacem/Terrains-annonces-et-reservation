@@ -3,6 +3,7 @@ import {FormGroup,FormBuilder,Validators} from '@angular/forms'
 import { User } from '../models/user.model';
 import { MustMatch } from '../helpers/helpers';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,9 +12,12 @@ import { AuthService } from '../services/auth.service';
 export class RegisterComponent implements OnInit {
   form:FormGroup;
   user:User;
-  disabled:Boolean = false;
+  submited:Boolean = false;
   errors = [];
-  constructor(private formBuilder:FormBuilder,private authService:AuthService) { }
+  constructor(private formBuilder:FormBuilder,
+              private authService:AuthService,
+              private router:Router
+              ) { }
 
   ngOnInit() {
     this.registerForm()
@@ -24,7 +28,7 @@ export class RegisterComponent implements OnInit {
       first_name : ['',[Validators.required]],
       last_name:['',[Validators.required]],
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required]],
+      password:['',[Validators.required,Validators.minLength(8)]],
       cpassword:['',[Validators.required]],
       tel:['',[Validators.pattern('^[0-9]+$')]],
       date_birth:[''],
@@ -39,23 +43,21 @@ export class RegisterComponent implements OnInit {
   }
   submit(){
   
-    
+    this.submited = true;
     if(this.form.invalid){
       return;
     }
     this.authService.signUp(this.form.value).subscribe(res => {
-        console.log(res);
+      this.authService.setToken(res['access_token']);
+      this.router.navigateByUrl('/');
     },
       ResError => {   
-        console.log("ok");
        this.showErrors(ResError)
       }
     );
   }
 
   showErrors(ResError){
-   
     this.errors = ResError.error.errors;
-    console.log(this.errors);
   }
 }
