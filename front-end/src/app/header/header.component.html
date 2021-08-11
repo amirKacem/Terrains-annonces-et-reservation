@@ -9,13 +9,13 @@
                 <li class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                  <a routerLink="/" >Accueil</a> 
                 </li>
-                <li class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                <li  class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
                     <a routerLink="/terrains" >Terrains</a> 
                    </li>
                    <li class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
                     <a routerLink="/mesAnnonces" >Mes Annonces</a> 
                    </li>
-                   <li class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                   <li *ngIf="user && user.type=='club'" class="navbar__menu__item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
                     <a routerLink="/mesTerrains" >Terrains Ajoutés</a> 
                    </li>
                  

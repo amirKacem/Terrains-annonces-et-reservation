@@ -19,7 +19,7 @@
                             </div>
                          </div>
                         <div *ngFor="let annonce of annonces" class="col-5 events-boxs__item">
-                            <img src="http://127.0.0.1:8000/{{ annonce.image  }}"  style="height:230px">
+                            <a [routerLink]="['/annonce/detail',annonce.id]" ><img src="http://127.0.0.1:8000/{{ annonce.image  }}"  style="height:230px"></a>
                             <div class="events-boxs__item__footer">
                                 <div class="border-bottom-grey events-boxs__item__footer--row">
                                 

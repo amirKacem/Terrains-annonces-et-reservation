@@ -3,7 +3,8 @@
         
         <sidebar class="col-3 tabs--col bg-white pb-5"></sidebar>
         <div class="col-9  pl-5 right-block">
-            <div class="container">
+            <div class="container mt-4">
+              <h2 class="mb-4">Mon Compte</h2>
                 <p class="text-center text-danger" *ngFor="let  error of errors.email">{{ error  }}</p>
                 <form (ngSubmit)="updateUser()" [formGroup]="form" class="card-body" *ngIf="user">
                     <div class="row">

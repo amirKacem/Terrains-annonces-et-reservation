@@ -1,12 +1,12 @@
 
     <div class="nav-tabs account">
         <a class="nav-tabs__item" routerLink="/user/update" routerLinkActive="active" 
-        [routerLinkActiveOptions]="{exact: true}" >compte
+        [routerLinkActiveOptions]="{exact: true}" >Mon Compte
     </a>
         <a class="nav-tabs__item" routerLink="/mesAnnonces" routerLinkActive="active" 
         [routerLinkActiveOptions]="{exact: true}" >Mes Annonces
     </a>
-        <a class="nav-tabs__item" routerLink="/mesTerrains" routerLinkActive="active" 
+        <a *ngIf="user && user.type=='club'" class="nav-tabs__item" routerLink="/mesTerrains" routerLinkActive="active" 
             [routerLinkActiveOptions]="{exact: true}" >Tous Les Terrains Ajoutés
         </a>
  
